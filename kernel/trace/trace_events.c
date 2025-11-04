@@ -764,6 +764,9 @@ void trace_event_enable_tgid_record(bool enable)
 }
 
 /**
+ * SPDX-Req-ID: kernel/trace/trace_events.c:__ftrace_event_enable_disable
+ * SPDX-Req-HKey: TBD
+ * SPDX-Req-Text:
  * __ftrace_event_enable_disable - enable or disable a trace event
  * @file: trace event file associated with the event.
  * @enable: 0 or 1 respectively to disable/enable the event.
@@ -814,6 +817,8 @@ void trace_event_enable_tgid_record(bool enable)
  * Return:
  * * 0 on success
  * * any error returned by the event register or unregister callbacks
+ *
+ * SPDX-Req-End
  */
 static int __ftrace_event_enable_disable(struct trace_event_file *file,
 					 int enable, int soft_disable)
@@ -1349,6 +1354,9 @@ static void remove_event_file_dir(struct trace_event_file *file)
 }
 
 /**
+ * SPDX-Req-ID: kernel/trace/trace_events.c:__ftrace_set_clr_event_nolock
+ * SPDX-Req-HKey: TBD
+ * SPDX-Req-Text:
  * __ftrace_set_clr_event_nolock - enable or disable an event within a system.
  * @tr: target trace_array containing the events list.
  * @match: target system or event name (NULL for any).
@@ -1388,6 +1396,8 @@ static void remove_event_file_dir(struct trace_event_file *file)
  * * %-ENOMEM -  memory allocation fails for the module pointer
  * * any value returned by the first call to ftrace_event_enable_disable that
  * returned an error
+ *
+ * SPDX-Req-End
  */
 static int
 __ftrace_set_clr_event_nolock(struct trace_array *tr, const char *match,
@@ -1530,6 +1540,9 @@ int ftrace_set_clr_event(struct trace_array *tr, char *buf, int set)
 }
 
 /**
+ * SPDX-Req-ID: kernel/trace/trace_events.c:trace_set_clr_event
+ * SPDX-Req-HKey: TBD
+ * SPDX-Req-Text:
  * trace_set_clr_event - enable or disable an event within a system.
  * @system: system name (NULL for any system).
  * @event: event name (NULL for all events, within system).
@@ -1556,6 +1569,8 @@ int ftrace_set_clr_event(struct trace_array *tr, char *buf, int set)
  * * 0 on success
  * * %-ENODEV - the global tracer cannot be retrieved
  * * any other error condition returned by __ftrace_set_clr_event_nolock
+ *
+ * SPDX-Req-End
  */
 int trace_set_clr_event(const char *system, const char *event, int set)
 {
@@ -1569,6 +1584,9 @@ int trace_set_clr_event(const char *system, const char *event, int set)
 EXPORT_SYMBOL_GPL(trace_set_clr_event);
 
 /**
+ * SPDX-Req-ID: kernel/trace/trace_events.c:trace_array_set_clr_event
+ * SPDX-Req-HKey: TBD
+ * SPDX-Req-Text:
  * trace_array_set_clr_event - enable or disable an event within a system for
  * a trace array.
  * @tr: input trace array.
@@ -1590,6 +1608,8 @@ EXPORT_SYMBOL_GPL(trace_set_clr_event);
  * * 0 on success
  * * %-ENOENT - the input tr is NULL
  * * any other error condition returned by __ftrace_set_clr_event_nolock
+ *
+ * SPDX-Req-End
  */
 int trace_array_set_clr_event(struct trace_array *tr, const char *system,
 		const char *event, bool enable)
@@ -1888,6 +1908,9 @@ static void p_stop(struct seq_file *m, void *p)
 }
 
 /**
+ * SPDX-Req-ID: kernel/trace/trace_events.c:event_enable_read
+ * SPDX-Req-HKey: TBD
+ * SPDX-Req-Text:
  * event_enable_read - read from a trace event file to retrieve its status.
  * @filp: file pointer associated with the target trace event.
  * @ubuf: user space buffer where the event status is copied to.
@@ -1929,6 +1952,8 @@ static void p_stop(struct seq_file *m, void *p)
  * * the number of copied bytes on success
  * * %-ENODEV - the event file cannot be retrieved from the input filp
  * * any error returned by simple_read_from_buffer
+ *
+ * SPDX-Req-End
  */
 static ssize_t
 event_enable_read(struct file *filp, char __user *ubuf, size_t cnt,
@@ -1960,6 +1985,9 @@ event_enable_read(struct file *filp, char __user *ubuf, size_t cnt,
 }
 
 /**
+ * SPDX-Req-ID: kernel/trace/trace_events.c:event_enable_write
+ * SPDX-Req-HKey: TBD
+ * SPDX-Req-Text:
  * event_enable_write - write to a trace event file to enable/disable it.
  * @filp: file pointer associated with the target trace event.
  * @ubuf: user space buffer where the enable/disable value is copied from.
@@ -1999,6 +2027,8 @@ event_enable_read(struct file *filp, char __user *ubuf, size_t cnt,
  * * any error returned by ftrace_event_enable_disable
  * * %-EINVAL - the value copied from the user space ubuf is different
  * from 0 or 1
+ *
+ * SPDX-Req-End
  */
 static ssize_t
 event_enable_write(struct file *filp, const char __user *ubuf, size_t cnt,
