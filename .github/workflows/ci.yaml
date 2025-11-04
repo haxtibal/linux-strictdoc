@@ -1,17 +1,74 @@
 name: Kernel Requirements CI
 on:
   push:
+
 jobs:
-  build:
-    permissions:
-      contents: write
-    name: Search for functions that need documentation
+  discover-llr:
+    name: Find LLR candidates with coccinelle
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v3
 
-      - name: install StrictDoc
+      - name: install coccinelle
         run: sudo apt install coccinelle
 
       - name: Run coccinelle
-        run: cocci/find_doc_elements.sh | tee >(wc -l | xargs printf "We need to document %s elements.\n")
+        run: scripts/coccinelle/docs/find_doc_elements.sh | tee ${{ runner.temp }}/llr_candidates.txt >(wc -l | xargs printf "Found %s elements.\n")
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LLR candidates found with Coccinelle
+          path: ${{ runner.temp }}/llr_candidates.txt
+          overwrite: true
+
+  build:
+    permissions:
+      contents: write
+    name: Validate and render requirements
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install kbuild dependencies
+        run: sudo apt install bison flex
+
+      - name: install StrictDoc
+        run: pipx install strictdoc
+
+      - run: make defconfig
+
+      - name: strictdoc export
+        run: strictdoc export --output $RUNNER_TEMP/export .
+
+      - uses: actions/checkout@v4
+        with:
+          ref: lpc25_add_trace_events_enabled
+          fetch-depth: 3
+
+      - name: strictdoc generate diff view
+        run: strictdoc export . --output ${{ runner.temp }}/diff --generate-diff-git="HEAD^^..HEAD"
+
+      - run: mv ${{ runner.temp }}/diff/html $RUNNER_TEMP/export/html/diff_view
+
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/export/html
+
+  deploy:
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
