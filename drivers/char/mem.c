@@ -76,6 +76,9 @@ static inline bool should_stop_iteration(void)
 }
 
 /**
+ * SPDX-Req-ID: drivers/char/mem.c:read_mem
+ * SPDX-Req-HKey: TBD
+ * SPDX-Req-Text:
  * read_mem - read from physical memory (/dev/mem).
  * @file: struct file associated with /dev/mem.
  * @buf: user-space buffer to copy data to.
@@ -123,6 +126,8 @@ static inline bool should_stop_iteration(void)
  * * %-EPERM - access to any of the required physical pages is not allowed
  * * %-ENOMEM - out of memory error for auxiliary kernel buffers supporting
  *   the operation of copying content from the physical pages
+ *
+ * SPDX-Req-End
  */
 static ssize_t read_mem(struct file *file, char __user *buf,
 			size_t count, loff_t *ppos)
@@ -212,6 +217,9 @@ failed:
 }
 
 /**
+ * SPDX-Req-ID: drivers/char/mem.c:write_mem
+ * SPDX-Req-HKey: TBD
+ * SPDX-Req-Text:
  * write_mem - write to physical memory (/dev/mem).
  * @file: struct file associated with /dev/mem.
  * @buf: user-space buffer containing the data to write.
@@ -258,6 +266,8 @@ failed:
  * * %-EFAULT - the physical address range is not valid or no bytes could
  *   be copied from user-space
  * * %-EPERM - access to any of the required pages is not allowed
+ *
+ * SPDX-Req-End
  */
 static ssize_t write_mem(struct file *file, const char __user *buf,
 			 size_t count, loff_t *ppos)
@@ -416,6 +426,9 @@ static const struct vm_operations_struct mmap_mem_ops = {
 };
 
 /**
+ * SPDX-Req-ID: drivers/char/mem.c:mmap_mem
+ * SPDX-Req-HKey: TBD
+ * SPDX-Req-Text:
  * mmap_mem - map physical memory into user space (/dev/mem).
  * @file: file structure for the device.
  * @vma: virtual memory area structure describing the user mapping.
@@ -450,6 +463,8 @@ static const struct vm_operations_struct mmap_mem_ops = {
  *   fails)
  * * %-EINVAL - requested physical range to be mapped is not valid
  * * %-EPERM - no permission to access the requested physical range
+ *
+ * SPDX-Req-End
  */
 static int mmap_mem(struct file *file, struct vm_area_struct *vma)
 {
@@ -693,6 +708,9 @@ static loff_t null_lseek(struct file *file, loff_t offset, int orig)
 }
 
 /**
+ * SPDX-Req-ID: drivers/char/mem.c:memory_lseek
+ * SPDX-Req-HKey: TBD
+ * SPDX-Req-Text:
  * memory_lseek - change the file position.
  * @file: file structure for the device.
  * @offset: file offset to seek to.
@@ -733,6 +751,8 @@ static loff_t null_lseek(struct file *file, loff_t offset, int orig)
  * * %-EOVERFLOW - the new position value equals or exceeds
  *   (unsigned long long) -MAX_ERRNO
  * * %-EINVAL - the orig parameter is invalid
+ *
+ * SPDX-Req-End
  */
 static loff_t memory_lseek(struct file *file, loff_t offset, int orig)
 {
@@ -761,6 +781,9 @@ static loff_t memory_lseek(struct file *file, loff_t offset, int orig)
 }
 
 /**
+ * SPDX-Req-ID: drivers/char/mem.c:open_port
+ * SPDX-Req-HKey: TBD
+ * SPDX-Req-Text:
  * open_port - open the I/O port device (/dev/port).
  * @inode: inode of the device file.
  * @filp: file structure for the device.
@@ -788,6 +811,8 @@ static loff_t memory_lseek(struct file *file, loff_t offset, int orig)
  * * 0 on success
  * * %-EPERM - caller lacks the required capability (CAP_SYS_RAWIO)
  * * any error returned by securty_locked_down()
+ *
+ * SPDX-Req-End
  */
 static int open_port(struct inode *inode, struct file *filp)
 {
@@ -897,6 +922,9 @@ static const struct memdev {
 };
 
 /**
+ * SPDX-Req-ID: drivers/char/mem.c:memory_open
+ * SPDX-Req-HKey: TBD
+ * SPDX-Req-Text:
  * memory_open - set the filp f_op to the memory device fops and invoke open().
  * @inode: inode of the device file.
  * @filp: file structure for the device.
@@ -922,6 +950,8 @@ static const struct memdev {
  *   associated with any device or the corresponding device has a NULL fops
  *   pointer
  * * any error returned by the device specific open function pointer
+ *
+ * SPDX-Req-End
  */
 static int memory_open(struct inode *inode, struct file *filp)
 {
