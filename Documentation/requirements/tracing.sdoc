@@ -1,0 +1,65 @@
+[DOCUMENT]
+MID: abc4542d5f1741c88dfcb4f68ad7dcbd
+TITLE: Tracing
+UID: DOC-SUBSYS-TRACING
+OPTIONS:
+  ENABLE_MID: True
+  RELATION_FIELD: MID
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: grammar.sgra
+
+[[SECTION]]
+TITLE: Low-Level Requirements
+
+[[SECTION]]
+TITLE: Event Tracing
+
+[[SECTION]]
+TITLE: Requirements
+
+[REQUIREMENT]
+MID: kernel/trace/trace_events.c:__ftrace_event_enable_disable
+SPDX-Req-Sys: Tracing
+TITLE: __ftrace_event_enable_disable
+
+[REQUIREMENT]
+MID: kernel/trace/trace_events.c:__ftrace_set_clr_event_nolock
+SPDX-Req-Sys: Tracing
+TITLE: __ftrace_set_clr_event_nolock
+RELATIONS:
+- TYPE: Parent
+  VALUE: kernel/trace/trace_events.c:__ftrace_event_enable_disable
+
+[REQUIREMENT]
+MID: kernel/trace/trace_events.c:trace_set_clr_event
+SPDX-Req-Sys: Tracing
+TITLE: trace_set_clr_event
+RELATIONS:
+- TYPE: Parent
+  VALUE: kernel/trace/trace_events.c:__ftrace_set_clr_event_nolock
+
+[REQUIREMENT]
+MID: kernel/trace/trace_events.c:trace_array_set_clr_event
+SPDX-Req-Sys: Tracing
+TITLE: trace_array_set_clr_event
+RELATIONS:
+- TYPE: Parent
+  VALUE: kernel/trace/trace_events.c:__ftrace_set_clr_event_nolock
+
+[REQUIREMENT]
+MID: kernel/trace/trace_events.c:event_enable_read
+SPDX-Req-Sys: Tracing
+TITLE: event_enable_read
+
+[REQUIREMENT]
+MID: kernel/trace/trace_events.c:event_enable_write
+SPDX-Req-Sys: Tracing
+TITLE: event_enable_write
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[/SECTION]]

@@ -1,0 +1,287 @@
+[DOCUMENT]
+MID: c2d4542d5f1741c88dfcb4f68ad7dcbd
+TITLE: Character Drivers and Misc
+UID: DOC-SUBSYS-CHARMISC
+OPTIONS:
+  ENABLE_MID: True
+  RELATION_FIELD: MID
+  MARKUP: Text
+
+[GRAMMAR]
+IMPORT_FROM_FILE: grammar.sgra
+
+[[SECTION]]
+TITLE: Low-Level Requirements
+
+[[SECTION]]
+TITLE: devmem
+
+[[SECTION]]
+TITLE: Requirements
+
+[REQUIREMENT]
+MID: drivers/char/mem.c:read_mem
+SPDX-Req-Sys: Character Drivers and Misc
+TITLE: read_mem
+
+[REQUIREMENT]
+MID: drivers/char/mem.c:write_mem
+SPDX-Req-Sys: Character Drivers and Misc
+TITLE: write_mem
+
+[REQUIREMENT]
+MID: drivers/char/mem.c:mmap_mem
+SPDX-Req-Sys: Character Drivers and Misc
+TITLE: mmap_mem
+
+[REQUIREMENT]
+MID: drivers/char/mem.c:memory_lseek
+SPDX-Req-Sys: Character Drivers and Misc
+TITLE: memory_lseek
+COMMENT: >>>
+The memory devices use the full 32/64 bits of the offset, and so we cannot
+check against negative addresses: they are ok. The return value is weird,
+though, in that case (0).
+<<<
+COMMENT: >>>
+Also note that seeking relative to the "end of file" isn't supported:
+it has no meaning, so passing orig equal to SEEK_END returns -EINVAL.
+<<<
+
+[REQUIREMENT]
+MID: drivers/char/mem.c:open_port
+SPDX-Req-Sys: Character Drivers and Misc
+TITLE: open_port
+
+[REQUIREMENT]
+MID: drivers/char/mem.c:memory_open
+SPDX-Req-Sys: Character Drivers and Misc
+TITLE: memory_open
+
+[[/SECTION]]
+
+[[SECTION]]
+TITLE: Tests
+
+[TEST]
+MID: selftests/devmem:access
+TITLE: memory_open FE_1, FE_2, FE_4
+DESCRIPTION: Test whether /dev/mem is accessible
+RELATIONS:
+- TYPE: Parent
+  VALUE: drivers/char/mem.c:memory_open
+  ROLE: Test
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_devmem_access
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 27, 32
+
+[TEST]
+MID: selftests/devmem:open_devnum
+TITLE: memory_open FE_3
+DESCRIPTION: Test open /dev/mem provides the correct min, maj
+RELATIONS:
+- TYPE: Parent
+  VALUE: drivers/char/mem.c:memory_open
+  ROLE: Test
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_open_devnum
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 33, 36
+
+[TEST]
+MID: selftests/devmem:strict_devmem
+TITLE: test_strict_devmem
+DESCRIPTION: Test Strict Devmem enabled - Dependency
+RELATIONS:
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_strict_devmem
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 37, 42
+
+[TEST]
+MID: selftests/devmem:read_at_addr_32bit_ge
+TITLE: read_mem FE_1
+DESCRIPTION: Test read 64bit ppos vs 32 bit addr
+RELATIONS:
+- TYPE: Parent
+  VALUE: drivers/char/mem.c:read_mem
+  ROLE: Test
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_read_at_addr_32bit_ge
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 43, 48
+
+[TEST]
+MID: selftests/devmem:read_outside_linear_map
+TITLE: read_mem FE_2
+DESCRIPTION: Test read outside linear map
+RELATIONS:
+- TYPE: Parent
+  VALUE: drivers/char/mem.c:read_mem
+  ROLE: Test
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_read_outside_linear_map
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 49, 54
+
+[TEST]
+MID: selftests/devmem:read_secret_area
+TITLE: read_mem FE_???
+DESCRIPTION: Test read memfd_secret area can not being accessed
+RELATIONS:
+- TYPE: Parent
+  VALUE: drivers/char/mem.c:read_mem
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_read_secret_area
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 55, 60
+
+[TEST]
+MID: selftests/devmem:read_allowed_area
+TITLE: read_mem FE_3.2
+DESCRIPTION: test read allowed area
+RELATIONS:
+- TYPE: Parent
+  VALUE: drivers/char/mem.c:read_mem
+  ROLE: Test
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_read_allowed_area
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 61, 66
+
+[TEST]
+MID: selftests/devmem:read_allowed_area_ppos_advance
+TITLE: read_mem FE_4
+DESCRIPTION: test read allowed area increments ppos
+RELATIONS:
+- TYPE: Parent
+  VALUE: drivers/char/mem.c:read_mem
+  ROLE: Test
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_read_allowed_area_ppos_advance
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 67, 72
+
+[TEST]
+MID: selftests/devmem:read_restricted_area
+TITLE: read_mem FE_3.3, FE_3.3.1, FE_3.2.2
+DESCRIPTION: test read restricted returns zeros
+RELATIONS:
+- TYPE: Parent
+  VALUE: drivers/char/mem.c:read_mem
+  ROLE: Test
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_read_restricted_area
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 73, 78
+
+[TEST]
+MID: selftests/devmem:write_outside_area
+TITLE: write_mem - FE_2
+DESCRIPTION: test write outside
+RELATIONS:
+- TYPE: Parent
+  VALUE: drivers/char/mem.c:write_mem
+  ROLE: Test
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_write_outside_area
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 79, 84
+
+[TEST]
+MID: selftests/devmem:seek_seek_set
+TITLE: memory_lseek FE_2, FE_2.2
+DESCRIPTION: test seek funcction SEEK_SET
+RELATIONS:
+- TYPE: Parent
+  VALUE: drivers/char/mem.c:memory_lseek
+  ROLE: Test
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_seek_seek_set
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 85, 90
+
+[TEST]
+MID: selftests/devmem:seek_seek_cur
+TITLE: memory_lseek FE_2, FE_2.1
+DESCRIPTION: test seek function SEEK_CUR
+RELATIONS:
+- TYPE: Parent
+  VALUE: drivers/char/mem.c:memory_lseek
+  ROLE: Test
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_seek_seek_cur
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 91, 96
+
+[TEST]
+MID: selftests/devmem:seek_seek_other
+TITLE: memory_lseek FE_2, FE2.3
+DESCRIPTION: test seek function SEEK_END other
+RELATIONS:
+- TYPE: Parent
+  VALUE: drivers/char/mem.c:memory_lseek
+  ROLE: Test
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/tests.c
+  FUNCTION: test_seek_seek_other
+- TYPE: File
+  ROLE: Test
+  VALUE: tools/testing/selftests/devmem/devmem.c
+  LINE_RANGE: 97, 102
+
+[[/SECTION]]
+
+[[/SECTION]]
+
+[[/SECTION]]
