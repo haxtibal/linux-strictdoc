@@ -20,41 +20,41 @@ TITLE: Event Tracing
 TITLE: Requirements
 
 [REQUIREMENT]
-MID: kernel/trace/trace_events.c:__ftrace_event_enable_disable
+MID: c5f6ec6dd87a9820ce2bcc3389c7242a52a563ef9c5c9cae17767549ee0db78e
 SPDX-Req-Sys: Tracing
 TITLE: __ftrace_event_enable_disable
 
 [REQUIREMENT]
-MID: kernel/trace/trace_events.c:__ftrace_set_clr_event_nolock
+MID: e20c6c520dd3d561a8267ee914aca62366adc2eb73a36e96bf992428944f7a98
 SPDX-Req-Sys: Tracing
 TITLE: __ftrace_set_clr_event_nolock
 RELATIONS:
 - TYPE: Parent
-  VALUE: kernel/trace/trace_events.c:__ftrace_event_enable_disable
+  VALUE: c5f6ec6dd87a9820ce2bcc3389c7242a52a563ef9c5c9cae17767549ee0db78e
 
 [REQUIREMENT]
-MID: kernel/trace/trace_events.c:trace_set_clr_event
+MID: 7562d3291aa460c1b9b1f69d0bb0eff8804913581c8538efeb444dd3fbb8c1cf
 SPDX-Req-Sys: Tracing
 TITLE: trace_set_clr_event
 RELATIONS:
 - TYPE: Parent
-  VALUE: kernel/trace/trace_events.c:__ftrace_set_clr_event_nolock
+  VALUE: e20c6c520dd3d561a8267ee914aca62366adc2eb73a36e96bf992428944f7a98
 
 [REQUIREMENT]
-MID: kernel/trace/trace_events.c:trace_array_set_clr_event
+MID: 65f51dbbeb67ac5a7f141c7f287f2caccdcd130a342203beab18d48c288de185
 SPDX-Req-Sys: Tracing
 TITLE: trace_array_set_clr_event
 RELATIONS:
 - TYPE: Parent
-  VALUE: kernel/trace/trace_events.c:__ftrace_set_clr_event_nolock
+  VALUE: e20c6c520dd3d561a8267ee914aca62366adc2eb73a36e96bf992428944f7a98
 
 [REQUIREMENT]
-MID: kernel/trace/trace_events.c:event_enable_read
+MID: 67522346fa24a202a6ac669e06cb6d84f9260fd9a77b740234f06719c521154c
 SPDX-Req-Sys: Tracing
 TITLE: event_enable_read
 
 [REQUIREMENT]
-MID: kernel/trace/trace_events.c:event_enable_write
+MID: 3dfce495f35d1c9bb968d1b826ad1ee0366ef8d585d9bc1b9465fd3716057ba4
 SPDX-Req-Sys: Tracing
 TITLE: event_enable_write
 

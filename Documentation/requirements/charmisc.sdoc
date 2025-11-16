@@ -20,22 +20,22 @@ TITLE: devmem
 TITLE: Requirements
 
 [REQUIREMENT]
-MID: drivers/char/mem.c:read_mem
+MID: 520eadd85cb2c706274ca992c02358cb4a699a8ccaa4933650c446b6c7c60777
 SPDX-Req-Sys: Character Drivers and Misc
 TITLE: read_mem
 
 [REQUIREMENT]
-MID: drivers/char/mem.c:write_mem
+MID: e6f238bbbaab30163150383d9b2363d6d646ff680f643895eb2ac0a1fa26985e
 SPDX-Req-Sys: Character Drivers and Misc
 TITLE: write_mem
 
 [REQUIREMENT]
-MID: drivers/char/mem.c:mmap_mem
+MID: 3049d84ce21beaa0aec3b2ad356a190c9f6102b96b04f9c12fa104c07e2f217c
 SPDX-Req-Sys: Character Drivers and Misc
 TITLE: mmap_mem
 
 [REQUIREMENT]
-MID: drivers/char/mem.c:memory_lseek
+MID: a378950aa3d1b5eb651ffdae266d2b4e40fa7f823c5210c98d3e900fec1acc7b
 SPDX-Req-Sys: Character Drivers and Misc
 TITLE: memory_lseek
 COMMENT: >>>
@@ -49,12 +49,12 @@ it has no meaning, so passing orig equal to SEEK_END returns -EINVAL.
 <<<
 
 [REQUIREMENT]
-MID: drivers/char/mem.c:open_port
+MID: 3c2ce3d37e4d1ce27d9b8ad4650cc9e0d62083a606f9f1da586aea7c4dd262e9
 SPDX-Req-Sys: Character Drivers and Misc
 TITLE: open_port
 
 [REQUIREMENT]
-MID: drivers/char/mem.c:memory_open
+MID: 7d833331f8468e5293b0c405c14ab5f96b45ead5ad14bcc2ec48484ae58c6477
 SPDX-Req-Sys: Character Drivers and Misc
 TITLE: memory_open
 
@@ -69,7 +69,7 @@ TITLE: memory_open FE_1, FE_2, FE_4
 DESCRIPTION: Test whether /dev/mem is accessible
 RELATIONS:
 - TYPE: Parent
-  VALUE: drivers/char/mem.c:memory_open
+  VALUE: 7d833331f8468e5293b0c405c14ab5f96b45ead5ad14bcc2ec48484ae58c6477
   ROLE: Test
 - TYPE: File
   ROLE: Test
@@ -86,7 +86,7 @@ TITLE: memory_open FE_3
 DESCRIPTION: Test open /dev/mem provides the correct min, maj
 RELATIONS:
 - TYPE: Parent
-  VALUE: drivers/char/mem.c:memory_open
+  VALUE: 7d833331f8468e5293b0c405c14ab5f96b45ead5ad14bcc2ec48484ae58c6477
   ROLE: Test
 - TYPE: File
   ROLE: Test
@@ -117,7 +117,7 @@ TITLE: read_mem FE_1
 DESCRIPTION: Test read 64bit ppos vs 32 bit addr
 RELATIONS:
 - TYPE: Parent
-  VALUE: drivers/char/mem.c:read_mem
+  VALUE: 520eadd85cb2c706274ca992c02358cb4a699a8ccaa4933650c446b6c7c60777
   ROLE: Test
 - TYPE: File
   ROLE: Test
@@ -134,7 +134,7 @@ TITLE: read_mem FE_2
 DESCRIPTION: Test read outside linear map
 RELATIONS:
 - TYPE: Parent
-  VALUE: drivers/char/mem.c:read_mem
+  VALUE: 520eadd85cb2c706274ca992c02358cb4a699a8ccaa4933650c446b6c7c60777
   ROLE: Test
 - TYPE: File
   ROLE: Test
@@ -151,7 +151,7 @@ TITLE: read_mem FE_???
 DESCRIPTION: Test read memfd_secret area can not being accessed
 RELATIONS:
 - TYPE: Parent
-  VALUE: drivers/char/mem.c:read_mem
+  VALUE: 520eadd85cb2c706274ca992c02358cb4a699a8ccaa4933650c446b6c7c60777
 - TYPE: File
   ROLE: Test
   VALUE: tools/testing/selftests/devmem/tests.c
@@ -167,7 +167,7 @@ TITLE: read_mem FE_3.2
 DESCRIPTION: test read allowed area
 RELATIONS:
 - TYPE: Parent
-  VALUE: drivers/char/mem.c:read_mem
+  VALUE: 520eadd85cb2c706274ca992c02358cb4a699a8ccaa4933650c446b6c7c60777
   ROLE: Test
 - TYPE: File
   ROLE: Test
@@ -184,7 +184,7 @@ TITLE: read_mem FE_4
 DESCRIPTION: test read allowed area increments ppos
 RELATIONS:
 - TYPE: Parent
-  VALUE: drivers/char/mem.c:read_mem
+  VALUE: 520eadd85cb2c706274ca992c02358cb4a699a8ccaa4933650c446b6c7c60777
   ROLE: Test
 - TYPE: File
   ROLE: Test
@@ -201,7 +201,7 @@ TITLE: read_mem FE_3.3, FE_3.3.1, FE_3.2.2
 DESCRIPTION: test read restricted returns zeros
 RELATIONS:
 - TYPE: Parent
-  VALUE: drivers/char/mem.c:read_mem
+  VALUE: 520eadd85cb2c706274ca992c02358cb4a699a8ccaa4933650c446b6c7c60777
   ROLE: Test
 - TYPE: File
   ROLE: Test
@@ -218,7 +218,7 @@ TITLE: write_mem - FE_2
 DESCRIPTION: test write outside
 RELATIONS:
 - TYPE: Parent
-  VALUE: drivers/char/mem.c:write_mem
+  VALUE: e6f238bbbaab30163150383d9b2363d6d646ff680f643895eb2ac0a1fa26985e
   ROLE: Test
 - TYPE: File
   ROLE: Test
@@ -235,7 +235,7 @@ TITLE: memory_lseek FE_2, FE_2.2
 DESCRIPTION: test seek funcction SEEK_SET
 RELATIONS:
 - TYPE: Parent
-  VALUE: drivers/char/mem.c:memory_lseek
+  VALUE: a378950aa3d1b5eb651ffdae266d2b4e40fa7f823c5210c98d3e900fec1acc7b
   ROLE: Test
 - TYPE: File
   ROLE: Test
@@ -252,7 +252,7 @@ TITLE: memory_lseek FE_2, FE_2.1
 DESCRIPTION: test seek function SEEK_CUR
 RELATIONS:
 - TYPE: Parent
-  VALUE: drivers/char/mem.c:memory_lseek
+  VALUE: a378950aa3d1b5eb651ffdae266d2b4e40fa7f823c5210c98d3e900fec1acc7b
   ROLE: Test
 - TYPE: File
   ROLE: Test
@@ -269,7 +269,7 @@ TITLE: memory_lseek FE_2, FE2.3
 DESCRIPTION: test seek function SEEK_END other
 RELATIONS:
 - TYPE: Parent
-  VALUE: drivers/char/mem.c:memory_lseek
+  VALUE: a378950aa3d1b5eb651ffdae266d2b4e40fa7f823c5210c98d3e900fec1acc7b
   ROLE: Test
 - TYPE: File
   ROLE: Test

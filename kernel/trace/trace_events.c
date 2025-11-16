@@ -764,8 +764,8 @@ void trace_event_enable_tgid_record(bool enable)
 }
 
 /**
- * SPDX-Req-ID: kernel/trace/trace_events.c:__ftrace_event_enable_disable
- * SPDX-Req-HKey: TBD
+ * SPDX-Req-ID: c5f6ec6dd87a9820ce2bcc3389c7242a52a563ef9c5c9cae17767549ee0db78e
+ * SPDX-Req-HKey: 90ff1cf8fa6aa746b493b624366a399055f4ae7c5b169365b98054d2e8d2d881
  * SPDX-Req-Text:
  * __ftrace_event_enable_disable - enable or disable a trace event
  * @file: trace event file associated with the event.
@@ -1354,8 +1354,8 @@ static void remove_event_file_dir(struct trace_event_file *file)
 }
 
 /**
- * SPDX-Req-ID: kernel/trace/trace_events.c:__ftrace_set_clr_event_nolock
- * SPDX-Req-HKey: TBD
+ * SPDX-Req-ID: e20c6c520dd3d561a8267ee914aca62366adc2eb73a36e96bf992428944f7a98
+ * SPDX-Req-HKey: f1234c19dfd2d24696efbefaff91ddc40ef6d216252e5a7c2bdb6e835f6c426e
  * SPDX-Req-Text:
  * __ftrace_set_clr_event_nolock - enable or disable an event within a system.
  * @tr: target trace_array containing the events list.
@@ -1540,8 +1540,8 @@ int ftrace_set_clr_event(struct trace_array *tr, char *buf, int set)
 }
 
 /**
- * SPDX-Req-ID: kernel/trace/trace_events.c:trace_set_clr_event
- * SPDX-Req-HKey: TBD
+ * SPDX-Req-ID: 7562d3291aa460c1b9b1f69d0bb0eff8804913581c8538efeb444dd3fbb8c1cf
+ * SPDX-Req-HKey: 97cc6cfd5073461da4eab3f436287d53c23fe0e8896bf9b05db5c0a75f5547e3
  * SPDX-Req-Text:
  * trace_set_clr_event - enable or disable an event within a system.
  * @system: system name (NULL for any system).
@@ -1584,8 +1584,8 @@ int trace_set_clr_event(const char *system, const char *event, int set)
 EXPORT_SYMBOL_GPL(trace_set_clr_event);
 
 /**
- * SPDX-Req-ID: kernel/trace/trace_events.c:trace_array_set_clr_event
- * SPDX-Req-HKey: TBD
+ * SPDX-Req-ID: 65f51dbbeb67ac5a7f141c7f287f2caccdcd130a342203beab18d48c288de185
+ * SPDX-Req-HKey: 5e55f3760c0313ec5645d05783e61f39437528cce0346077819c4e8c795468d3
  * SPDX-Req-Text:
  * trace_array_set_clr_event - enable or disable an event within a system for
  * a trace array.
@@ -1908,8 +1908,8 @@ static void p_stop(struct seq_file *m, void *p)
 }
 
 /**
- * SPDX-Req-ID: kernel/trace/trace_events.c:event_enable_read
- * SPDX-Req-HKey: TBD
+ * SPDX-Req-ID: 67522346fa24a202a6ac669e06cb6d84f9260fd9a77b740234f06719c521154c
+ * SPDX-Req-HKey: 40ac9a648a9f99c98fdbb5dce63bb3538f2b9760b33c701a386022046fb61616
  * SPDX-Req-Text:
  * event_enable_read - read from a trace event file to retrieve its status.
  * @filp: file pointer associated with the target trace event.
@@ -1985,8 +1985,8 @@ event_enable_read(struct file *filp, char __user *ubuf, size_t cnt,
 }
 
 /**
- * SPDX-Req-ID: kernel/trace/trace_events.c:event_enable_write
- * SPDX-Req-HKey: TBD
+ * SPDX-Req-ID: 3dfce495f35d1c9bb968d1b826ad1ee0366ef8d585d9bc1b9465fd3716057ba4
+ * SPDX-Req-HKey: 41b347665af61f1525825662ff6ed29b362187f9669e9625099b76f8bb8d4717
  * SPDX-Req-Text:
  * event_enable_write - write to a trace event file to enable/disable it.
  * @filp: file pointer associated with the target trace event.
