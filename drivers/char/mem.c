@@ -76,7 +76,7 @@ static inline bool should_stop_iteration(void)
 }
 
 /**
- * SPDX-Req-ID: drivers/char/mem.c:read_mem
+ * SPDX-Req-ID: a89784c55426aec4b8ba345f281a0ec478d43897a0a248618cb140c03c770c75
  * SPDX-Req-Text:
  * read_mem - read from physical memory (/dev/mem).
  * @file: struct file associated with /dev/mem.
@@ -216,7 +216,7 @@ failed:
 }
 
 /**
- * SPDX-Req-ID: drivers/char/mem.c:write_mem
+ * SPDX-Req-ID: 6e16917c09ee583de5dc9e8a24a406e75bb229554699a501cfa8efdb308862d7
  * SPDX-Req-Text:
  * write_mem - write to physical memory (/dev/mem).
  * @file: struct file associated with /dev/mem.
@@ -424,7 +424,7 @@ static const struct vm_operations_struct mmap_mem_ops = {
 };
 
 /**
- * SPDX-Req-ID: drivers/char/mem.c:mmap_mem
+ * SPDX-Req-ID: 032b3f1c9e61452bf826328d95fae043c4ea4b966ad6583a0377554d3c4f2d76
  * SPDX-Req-Text:
  * mmap_mem - map physical memory into user space (/dev/mem).
  * @file: file structure for the device.
@@ -705,7 +705,7 @@ static loff_t null_lseek(struct file *file, loff_t offset, int orig)
 }
 
 /**
- * SPDX-Req-ID: drivers/char/mem.c:memory_lseek
+ * SPDX-Req-ID: feb4cb915f91d319078204293f6cf99eb50e775a8f670e478e30e84bd6979a14
  * SPDX-Req-Text:
  * memory_lseek - change the file position.
  * @file: file structure for the device.
@@ -777,7 +777,7 @@ static loff_t memory_lseek(struct file *file, loff_t offset, int orig)
 }
 
 /**
- * SPDX-Req-ID: drivers/char/mem.c:open_port
+ * SPDX-Req-ID: 6638528f181fca48b6554dc9dc34a070ce1860a9fd0e2f5857f17f0de915f5d9
  * SPDX-Req-Text:
  * open_port - open the I/O port device (/dev/port).
  * @inode: inode of the device file.
@@ -917,7 +917,7 @@ static const struct memdev {
 };
 
 /**
- * SPDX-Req-ID: drivers/char/mem.c:memory_open
+ * SPDX-Req-ID: 46dc914c8b39c0763e1d407cf985e16e68b5c153cdbdae6e03173972db455da0
  * SPDX-Req-Text:
  * memory_open - set the filp f_op to the memory device fops and invoke open().
  * @inode: inode of the device file.

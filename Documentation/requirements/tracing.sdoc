@@ -11,50 +11,59 @@ OPTIONS:
 IMPORT_FROM_FILE: grammar.sgra
 
 [[SECTION]]
+MID: 1fb2ff8805cf482cbdfcea23561c850c
 TITLE: Low-Level Requirements
 
 [[SECTION]]
+MID: 5ff8306dcba146eca39619af016fbe43
 TITLE: Event Tracing
 
 [[SECTION]]
+MID: 1ac497acf75d497f893006853f85fe86
 TITLE: Requirements
 
 [REQUIREMENT]
-MID: kernel/trace/trace_events.c:__ftrace_event_enable_disable
+MID: 77958d2a51762caa727e5751d8dfec127c07cb5385f542d7b2fdf26b2a07c8b3
+HASH: e8ee84ca42f5626ca9636abb53ded027708fdaabc99c8b935c016dda53130d81
 SPDX-Req-Sys: Tracing
 TITLE: __ftrace_event_enable_disable
 
 [REQUIREMENT]
-MID: kernel/trace/trace_events.c:__ftrace_set_clr_event_nolock
+MID: 428a5db6e481de87fc424119c30738d83e378b34bb42e12295ddfcba9839e5b3
+HASH: e51e19a73c8c491cc21da2c53684566c0ceebe26b123fdc16bf859ee6606c43a
 SPDX-Req-Sys: Tracing
 TITLE: __ftrace_set_clr_event_nolock
 RELATIONS:
 - TYPE: Parent
-  VALUE: kernel/trace/trace_events.c:__ftrace_event_enable_disable
+  VALUE: 77958d2a51762caa727e5751d8dfec127c07cb5385f542d7b2fdf26b2a07c8b3
 
 [REQUIREMENT]
-MID: kernel/trace/trace_events.c:trace_set_clr_event
+MID: 080fa9a6d27aa94dfaf8cbceb9715cbc146b0671bbe53c10dccf173f911b1a5e
+HASH: f8f29e7907a29e320df18a0950fa64b161dcd5cdd7960b44896e396bccb437c2
 SPDX-Req-Sys: Tracing
 TITLE: trace_set_clr_event
 RELATIONS:
 - TYPE: Parent
-  VALUE: kernel/trace/trace_events.c:__ftrace_set_clr_event_nolock
+  VALUE: 428a5db6e481de87fc424119c30738d83e378b34bb42e12295ddfcba9839e5b3
 
 [REQUIREMENT]
-MID: kernel/trace/trace_events.c:trace_array_set_clr_event
+MID: 9c8df0f97d3dc3e6e0a2df6ade7f7d99a983559f03b64d3ed16ec6b1314e88bd
+HASH: 9d9e9749fcdea49bddbf04196c6f91fe0402dcd5abb42087358a2bb4188dee9b
 SPDX-Req-Sys: Tracing
 TITLE: trace_array_set_clr_event
 RELATIONS:
 - TYPE: Parent
-  VALUE: kernel/trace/trace_events.c:__ftrace_set_clr_event_nolock
+  VALUE: 428a5db6e481de87fc424119c30738d83e378b34bb42e12295ddfcba9839e5b3
 
 [REQUIREMENT]
-MID: kernel/trace/trace_events.c:event_enable_read
+MID: dfa044fb2e2570c8691dc83f65ab96142120f1dd61a5d746947f9d36d10c0223
+HASH: cfecd529348a4e4b03c4df242bf53845e108ab1347364da515e0dbbaa0ddb1ef
 SPDX-Req-Sys: Tracing
 TITLE: event_enable_read
 
 [REQUIREMENT]
-MID: kernel/trace/trace_events.c:event_enable_write
+MID: 4e996e6ac0d952336cac1f8497fb9fdb73407c3942008b2853ae2bc417db4f93
+HASH: a87575aecf3aa1cd0b6331c326ce148e818e1f6b44a0d0827b815d3e47ae8f36
 SPDX-Req-Sys: Tracing
 TITLE: event_enable_write
 
