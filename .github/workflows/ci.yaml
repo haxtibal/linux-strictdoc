@@ -1,0 +1,17 @@
+name: Kernel Requirements CI
+on:
+  push:
+jobs:
+  build:
+    permissions:
+      contents: write
+    name: Search for functions that need documentation
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: install StrictDoc
+        run: sudo apt install coccinelle
+
+      - name: Run coccinelle
+        run: cocci/find_doc_elements.sh | tee >(wc -l | xargs printf "We need to document %s elements.\n")
