@@ -2062,6 +2062,14 @@ event_enable_write(struct file *filp, const char __user *ubuf, size_t cnt,
 }
 
 /*
+ * SPDX-Req-ID: TMP-trace_events_enabled
+ * SPDX-Req-Text:
+ * trace_events_enabled - check if events are enabled.
+ * @trace_array: array to search.
+ * @system: optional trace system name.
+ *
+ * This function shall check if a given trace list has enabled events.
+ *
  * Returns:
  *   0 : no events exist?
  *   1 : all events are disabled

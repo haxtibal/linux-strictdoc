@@ -67,6 +67,11 @@ HASH: a87575aecf3aa1cd0b6331c326ce148e818e1f6b44a0d0827b815d3e47ae8f36
 SPDX-Req-Sys: Tracing
 TITLE: event_enable_write
 
+[REQUIREMENT]
+MID: TMP-trace_events_enabled
+SPDX-Req-Sys: Tracing
+TITLE: trace_events_enabled
+
 [[/SECTION]]
 
 [[/SECTION]]
