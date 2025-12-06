@@ -68,7 +68,8 @@ SPDX-Req-Sys: Tracing
 TITLE: event_enable_write
 
 [REQUIREMENT]
-MID: TMP-trace_events_enabled
+MID: 683e979e1bc3fdb8c17ce17122410128914e9dbc56935d6c4884d183cd09a2c4
+HASH: 9be93a6d23fb8cc6d4cba54a233a0e16fdb556974b825f9615eb371abc539df0
 SPDX-Req-Sys: Tracing
 TITLE: trace_events_enabled
 

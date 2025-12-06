@@ -2062,7 +2062,7 @@ event_enable_write(struct file *filp, const char __user *ubuf, size_t cnt,
 }
 
 /*
- * SPDX-Req-ID: TMP-trace_events_enabled
+ * SPDX-Req-ID: 683e979e1bc3fdb8c17ce17122410128914e9dbc56935d6c4884d183cd09a2c4
  * SPDX-Req-Text:
  * trace_events_enabled - check if events are enabled.
  * @trace_array: array to search.
