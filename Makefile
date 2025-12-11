@@ -1799,7 +1799,7 @@ $(help-board-dirs): help-%:
 # ---------------------------------------------------------------------------
 DOC_TARGETS := xmldocs latexdocs pdfdocs htmldocs htmldocs-redirects \
 	       epubdocs cleandocs linkcheckdocs dochelp refcheckdocs \
-	       texinfodocs infodocs
+	       texinfodocs infodocs htmlreqs
 PHONY += $(DOC_TARGETS)
 $(DOC_TARGETS):
 	$(Q)$(MAKE) $(build)=Documentation $@

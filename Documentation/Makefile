@@ -172,6 +172,9 @@ endif # HAVE_SPHINX
 refcheckdocs:
 	$(Q)cd $(srctree);scripts/documentation-file-ref-check
 
+htmlreqs:
+	strictdoc export $(srctree)
+
 cleandocs:
 	$(Q)rm -rf $(BUILDDIR)
 
